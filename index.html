@@ -18,8 +18,8 @@
         .sub-logo { font-size: 0.8rem; letter-spacing: 0.4em; color: #fff; margin-top: 15px; text-transform: uppercase; opacity: 0.8; }
 
         /* Навігація */
-        nav { padding: 40px; position: sticky; top: 0; background: #000; z-index: 100; border-bottom: 1px solid #222; }
-        nav a { color: #fff; margin: 0 15px; text-transform: uppercase; cursor: pointer; text-decoration: none; font-size: 11px; letter-spacing: 2px; }
+        nav { padding: 40px; position: sticky; top: 0; background: #000; z-index: 100; border-bottom: 1px solid #222; overflow-x: auto; white-space: nowrap; }
+        nav a { color: #fff; margin: 0 10px; text-transform: uppercase; cursor: pointer; text-decoration: none; font-size: 10px; letter-spacing: 2px; }
         
         /* Контент */
         .about-section { max-width: 600px; margin: 80px auto; padding: 20px; color: #ccc; line-height: 1.6; }
@@ -32,10 +32,10 @@
         footer { padding: 80px 20px; color: #444; }
 
         @media (max-width: 600px) { 
-            .logo-text { font-size: 1.8rem; } 
-            .sub-logo { font-size: 0.6rem; }
+            .logo-text { font-size: 1.5rem; } 
+            .sub-logo { font-size: 0.5rem; }
             .gallery { grid-template-columns: repeat(2, 1fr); } 
-            .gallery a { height: 180px; }
+            .gallery a { height: 150px; }
         }
     </style>
 </head>
@@ -60,32 +60,28 @@
         <a href="#promo">Рекламні</a>
         <a href="#male">Чоловічі</a>
         <a href="#kids">Дитячі</a>
+        <a href="#interior">Інтер'єр</a>
+        <a href="#lovestory">Love Story</a>
     </nav>
 
-    <div id="wedding" class="section-header">ВЕСІЛЛЯ</div>
-    <div class="gallery">
-        <script>for(let i=1; i<=30; i++) document.write(`<a href="wedding${i}.jpg" data-lightbox="wedding"><img src="wedding${i}.jpg"></a>`);</script>
-    </div>
+    <script>
+        function renderGallery(id, prefix, count) {
+            document.write(`<div id="${id}" class="section-header">${id.toUpperCase().replace('-', ' ')}</div>`);
+            document.write(`<div class="gallery">`);
+            for(let i=1; i<=count; i++) {
+                document.write(`<a href="${prefix}${i}.jpg" data-lightbox="${id}"><img src="${prefix}${i}.jpg" alt="Photo ${i}"></a>`);
+            }
+            document.write(`</div>`);
+        }
+    </script>
 
-    <div id="individual" class="section-header">ІНДИВІДУАЛЬНІ</div>
-    <div class="gallery">
-        <script>for(let i=1; i<=30; i++) document.write(`<a href="ind${i}.jpg" data-lightbox="individual"><img src="ind${i}.jpg"></a>`);</script>
-    </div>
-
-    <div id="promo" class="section-header">РЕКЛАМНІ</div>
-    <div class="gallery">
-        <script>for(let i=1; i<=30; i++) document.write(`<a href="promo${i}.jpg" data-lightbox="promo"><img src="promo${i}.jpg"></a>`);</script>
-    </div>
-
-    <div id="male" class="section-header">ЧОЛОВІЧІ</div>
-    <div class="gallery">
-        <script>for(let i=1; i<=30; i++) document.write(`<a href="male${i}.jpg" data-lightbox="male"><img src="male${i}.jpg"></a>`);</script>
-    </div>
-
-    <div id="kids" class="section-header">ДИТЯЧІ</div>
-    <div class="gallery">
-        <script>for(let i=1; i<=30; i++) document.write(`<a href="kids${i}.jpg" data-lightbox="kids"><img src="kids${i}.jpg"></a>`);</script>
-    </div>
+    <script>renderGallery('wedding', 'wedding', 20);</script>
+    <script>renderGallery('individual', 'ind', 20);</script>
+    <script>renderGallery('promo', 'promo', 20);</script>
+    <script>renderGallery('male', 'male', 20);</script>
+    <script>renderGallery('kids', 'kids', 20);</script>
+    <script>renderGallery('interior', 'inter', 20);</script>
+    <script>renderGallery('lovestory', 'love', 20);</script>
 
     <footer>
         <div style="margin-bottom: 10px; letter-spacing: 2px; text-transform: uppercase;">ЗВ'ЯЗАТИСЯ ЗІ МНОЮ</div>
