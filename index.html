@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHERNETSKYI | Photography</title>
+    <!-- Тонкий та мінімалістичний шрифт Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
     <style>
         html { scroll-behavior: smooth; }
-        body { margin: 0; background: #fff; color: #000; font-family: 'Helvetica Neue', sans-serif; text-align: center; overflow-x: hidden; }
+        body { margin: 0; background: #fff; color: #000; font-family: 'Montserrat', sans-serif; text-align: center; overflow-x: hidden; letter-spacing: 0.15em; }
         
         #cover { height: 100vh; width: 100%; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         #cover-img { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
@@ -17,39 +19,40 @@
         .logo-text { font-size: 3rem; letter-spacing: 0.5em; text-transform: uppercase; font-weight: 200; margin: 0; }
         .sub-logo { font-size: 0.8rem; letter-spacing: 0.4em; margin-top: 15px; text-transform: uppercase; opacity: 0.8; }
 
-        .content-wrapper { position: relative; background: #fff; z-index: 10; padding-bottom: 50px; }
-        .about-section { max-width: 700px; margin: 0 auto; padding: 80px 20px; color: #333; line-height: 1.6; }
+        .content-wrapper { position: relative; background: #fff; z-index: 10; padding-bottom: 50px; min-height: 100vh; }
+        .about-section { max-width: 700px; margin: 0 auto; padding: 80px 20px; color: #333; line-height: 1.6; font-weight: 300; }
         
-        /* КАТЕГОРІЇ ТА ГАЛЕРЕЯ */
         .category-wrapper { margin-bottom: 80px; }
         .category-hero { position: relative; width: 100vw; height: 60vh; cursor: pointer; overflow: hidden; }
         .category-hero img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
         .category-hero:hover img { transform: scale(1.03); }
-        .hero-title { position: absolute; top: 50%; left: 0; width: 100%; transform: translateY(-50%); font-size: 1.5rem; letter-spacing: 12px; text-transform: uppercase; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.6); z-index: 2; pointer-events: none; }
+        .hero-title { position: absolute; top: 50%; left: 0; width: 100%; transform: translateY(-50%); font-size: 1.2rem; letter-spacing: 0.6em; text-transform: uppercase; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.6); z-index: 2; pointer-events: none; font-weight: 300; }
         
-        .category-description { margin-top: 20px; padding: 0 20px; }
-        .category-description h3 { font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
-        .category-description p { color: #666; font-size: 0.9rem; max-width: 500px; margin: auto; }
-
-        /* НАВІГАЦІЯ ТА ГАЛЕРЕЯ */
         .nav-gallery { margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 20px; display: flex; justify-content: center; flex-wrap: wrap; }
-        .nav-gallery span { margin: 10px; text-transform: uppercase; color: #999; font-size: 10px; letter-spacing: 2px; cursor: pointer; transition: 0.3s; }
-        .nav-gallery span:hover, .nav-gallery span.active { color: #000; font-weight: bold; }
+        .nav-gallery span { margin: 10px; text-transform: uppercase; color: #999; font-size: 10px; letter-spacing: 0.2em; cursor: pointer; transition: 0.3s; font-weight: 300; }
+        .nav-gallery span:hover, .nav-gallery span.active { color: #000; }
         
-        .back-btn { cursor: pointer; display: inline-block; margin-bottom: 30px; text-transform: uppercase; font-size: 10px; letter-spacing: 2px; text-decoration: underline; }
-        .masonry-gallery { column-count: 3; column-gap: 15px; max-width: 1200px; margin: auto; }
+        .back-btn { cursor: pointer; display: inline-block; margin-bottom: 30px; text-transform: uppercase; font-size: 10px; letter-spacing: 0.2em; text-decoration: underline; font-weight: 300; }
+        
+        .masonry-gallery { column-count: 3; column-gap: 15px; max-width: 1200px; margin: auto; padding: 0 10px; }
         .masonry-gallery a { margin-bottom: 15px; display: block; break-inside: avoid; }
         .masonry-gallery img { width: 100%; height: auto; display: block; transition: 0.3s; }
         .masonry-gallery img:hover { opacity: 0.8; transform: scale(1.01); }
 
-        footer { padding: 80px 20px; color: #777; background: #f9f9f9; border-top: 1px solid #eee; margin-top: 50px; }
-        .social-link { display: inline-block; margin: 10px; font-size: 1rem; color: #000; text-decoration: none; border: 1px solid #ccc; padding: 10px 20px; border-radius: 5px; }
+        footer { padding: 50px 20px; color: #777; background: #f9f9f9; border-top: 1px solid #eee; margin-top: 50px; font-weight: 300; }
+        
+        .contact-phone { display: block; color: #000; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; font-weight: 300; margin-bottom: 20px; }
+        
+        .contact-buttons { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .social-link { display: inline-block; font-size: 0.7rem; color: #000; text-decoration: none; border: 1px solid #ccc; padding: 8px 16px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 300; transition: 0.3s; }
+        .social-link:hover { background: #eee; border-color: #999; }
 
         @media (max-width: 900px) { .masonry-gallery { column-count: 2; } }
         @media (max-width: 600px) {
             .category-hero { height: 40vh; }
-            .hero-title { font-size: 1rem; letter-spacing: 6px; }
+            .hero-title { font-size: 0.9rem; letter-spacing: 0.4em; }
             .masonry-gallery { column-count: 1; }
+            .logo-text { font-size: 2rem; }
         }
     </style>
 </head>
@@ -59,7 +62,7 @@
     <div id="cover">
         <div class="logo-container">
             <div class="logo-text">CHERNETSKYI</div>
-            <div class="sub-logo">Photography</div>
+            <div class="sub-logo">PHOTOGRAPHY</div>
         </div>
     </div>
 
@@ -67,39 +70,36 @@
         <div id="dynamic-area">
             <div class="about-section">
                 <h2>Євгеній Чернецький</h2>
-                <p>Я український фотограф, створюю ваші історії, які залишаються з вами назавжди. Маю 15-річний досвід, понад 500 весільних пар, тисячі індивідуальних зйомок та івентів. Мій підхід — це мінімалізм, емоції та увага до деталей у кожному кадрі.</p>
+                <p>Я український фотограф, створюю ваші історії, які залишаються з вами назавжди. Маю 15-річний досвід, понад 500 весільних пар, тисячі індивідуальних зйомок та івентів.</p>
             </div>
             <div id="cards-container">
                 <script>
-                    function createCard(id, title, img, desc) {
+                    function createCard(id, title, img) {
                         document.write(`
                             <div class="category-wrapper">
                                 <div class="category-hero" onclick="openGallery('${id}')">
                                     <img src="${img}1.jpg" alt="${title}">
                                     <div class="hero-title">${title}</div>
                                 </div>
-                                <div class="category-description">
-                                    <h3>${title}</h3>
-                                    <p>${desc}</p>
-                                </div>
+                                <div class="category-description" style="margin-top:20px;"><h3>${title}</h3></div>
                             </div>
                         `);
                     }
-                    createCard('wedding', 'Wedding', 'wedding', 'Створення емоційних історій вашого найважливішого дня з увагою до найменших деталей.');
-                    createCard('individual', 'Individual', 'ind', 'Творчі портретні зйомки, що розкривають вашу особистість та настрій.');
-                    createCard('promo', 'Commercial', 'promo', 'Професійний візуальний контент для вашого бізнесу, що привертає увагу клієнтів.');
-                    createCard('male', 'Male Portraits', 'male', 'Стильні та впевнені чоловічі портрети, що підкреслюють характер.');
-                    createCard('kids', 'Kids', 'kids', 'Щирі моменти та дитяча безпосередність, збережені у ваших спогадах.');
-                    createCard('interior', 'Interior', 'inter', 'Професійна зйомка нерухомості та дизайну інтер\'єрів з акцентом на простір.');
-                    createCard('lovestory', 'Love Story', 'love', 'Ваша історія кохання, розказана через об\'єктив фотокамери.');
+                    createCard('wedding', 'WEDDING', 'wedding');
+                    createCard('individual', 'INDIVIDUAL', 'ind');
+                    createCard('promo', 'COMMERCIAL', 'promo');
+                    createCard('male', 'MALE PORTRAITS', 'male');
+                    createCard('kids', 'KIDS', 'kids');
+                    createCard('interior', 'INTERIOR', 'inter');
+                    createCard('lovestory', 'LOVE STORY', 'love');
                 </script>
             </div>
             
             <footer>
-                <a href="tel:+380635332571" style="display:block; color: #000; text-decoration: none; font-size: 1.5rem; letter-spacing: 2px;">+38 (063) 53-32-571</a>
-                <div style="margin-top:20px;">
-                    <a href="https://www.instagram.com/chernetskyi_photography/" target="_blank" class="social-link">Instagram</a>
-                    <a href="https://t.me/CHERNETSKYI_PHOTO" target="_blank" class="social-link">Telegram</a>
+                <a href="tel:+380635332571" class="contact-phone">+38 (063) 53-32-571</a>
+                <div class="contact-buttons">
+                    <a href="https://www.instagram.com/chernetskyi_photography/" target="_blank" class="social-link">INSTAGRAM</a>
+                    <a href="https://t.me/CHERNETSKYI_PHOTO" target="_blank" class="social-link">TELEGRAM</a>
                 </div>
             </footer>
         </div>
@@ -108,36 +108,35 @@
     <script>
         function openGallery(id) {
             const configs = { 
-                'wedding': { p: 'wedding', c: 20 }, 'individual': { p: 'ind', c: 20 }, 
-                'promo': { p: 'promo', c: 20 }, 'male': { p: 'male', c: 20 },
-                'kids': { p: 'kids', c: 20 }, 'interior': { p: 'inter', c: 20 }, 'lovestory': { p: 'love', c: 20 }
+                'wedding': { p: 'wedding', c: 8 }, 'individual': { p: 'ind', c: 8 }, 
+                'promo': { p: 'promo', c: 8 }, 'male': { p: 'male', c: 8 },
+                'kids': { p: 'kids', c: 8 }, 'interior': { p: 'inter', c: 8 }, 'lovestory': { p: 'love', c: 8 }
             };
             
             let html = `
                 <div class="gallery-page" style="display:block; padding-top: 50px;">
-                    <div class="back-btn" onclick="location.reload()">← Back to main</div>
+                    <div class="back-btn" onclick="location.reload()">← BACK</div>
                     <div class="nav-gallery">
-                        <span onclick="openGallery('wedding')">Wedding</span>
-                        <span onclick="openGallery('individual')">Individual</span>
-                        <span onclick="openGallery('promo')">Commercial</span>
-                        <span onclick="openGallery('male')">Male Portraits</span>
-                        <span onclick="openGallery('kids')">Kids</span>
-                        <span onclick="openGallery('interior')">Interior</span>
-                        <span onclick="openGallery('lovestory')">Love Story</span>
+                        <span onclick="openGallery('wedding')">WEDDING</span>
+                        <span onclick="openGallery('individual')">INDIVIDUAL</span>
+                        <span onclick="openGallery('promo')">COMMERCIAL</span>
+                        <span onclick="openGallery('male')">MALE</span>
+                        <span onclick="openGallery('kids')">KIDS</span>
+                        <span onclick="openGallery('interior')">INTERIOR</span>
+                        <span onclick="openGallery('lovestory')">LOVE STORY</span>
                     </div>
-                    <h2 style="margin-bottom:50px;">${id.replace('lovestory', 'Love Story').toUpperCase()}</h2>
+                    <h2 style="margin-bottom:50px; font-weight:300; letter-spacing:0.3em;">${id.replace('lovestory', 'LOVE STORY').toUpperCase()}</h2>
                     <div class="masonry-gallery">`;
             
             for(let i=1; i<=configs[id].c; i++) {
                 html += `<a href="${configs[id].p}${i}.jpg" data-lightbox="${id}"><img src="${configs[id].p}${i}.jpg"></a>`;
             }
             html += `</div>
-            
             <footer>
-                <a href="tel:+380635332571" style="display:block; color: #000; text-decoration: none; font-size: 1.5rem; letter-spacing: 2px;">+38 (063) 53-32-571</a>
-                <div style="margin-top:20px;">
-                    <a href="https://www.instagram.com/chernetskyi_photography/" target="_blank" class="social-link">Instagram</a>
-                    <a href="https://t.me/CHERNETSKYI_PHOTO" target="_blank" class="social-link">Telegram</a>
+                <a href="tel:+380635332571" class="contact-phone">+38 (063) 53-32-571</a>
+                <div class="contact-buttons">
+                    <a href="https://www.instagram.com/chernetskyi_photography/" target="_blank" class="social-link">INSTAGRAM</a>
+                    <a href="https://t.me/CHERNETSKYI_PHOTO" target="_blank" class="social-link">TELEGRAM</a>
                 </div>
             </footer>
             </div>`;
@@ -150,4 +149,3 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 </body>
 </html>
-
