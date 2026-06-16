@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHERNETSKYI | Photography</title>
-    <!-- Тонкий та мінімалістичний шрифт Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
     <style>
         html { scroll-behavior: smooth; }
         body { margin: 0; background: #fff; color: #000; font-family: 'Montserrat', sans-serif; text-align: center; overflow-x: hidden; letter-spacing: 0.15em; }
         
+        .top-nav { position: fixed; top: 0; width: 100%; padding: 30px 40px; z-index: 1000; display: flex; justify-content: flex-end; gap: 30px; box-sizing: border-box; }
+        .nav-btn { cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.3em; color: #fff; text-shadow: 0 0 5px rgba(0,0,0,0.5); font-weight: 300; }
+
         #cover { height: 100vh; width: 100%; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         #cover-img { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
         #cover::after { content: ""; position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.2); z-index: 2; }
         
         .logo-container { position: relative; z-index: 3; color: #fff; }
-        .logo-text { font-size: 3rem; letter-spacing: 0.5em; text-transform: uppercase; font-weight: 200; margin: 0; }
+        .logo-text { font-size: 3rem; letter-spacing: 0.5em; text-transform: uppercase; font-weight: 200; margin: 0; cursor: pointer; }
         .sub-logo { font-size: 0.8rem; letter-spacing: 0.4em; margin-top: 15px; text-transform: uppercase; opacity: 0.8; }
 
         .content-wrapper { position: relative; background: #fff; z-index: 10; padding-bottom: 50px; min-height: 100vh; }
@@ -40,59 +42,55 @@
         .masonry-gallery img:hover { opacity: 0.8; transform: scale(1.01); }
 
         footer { padding: 50px 20px; color: #777; background: #f9f9f9; border-top: 1px solid #eee; margin-top: 50px; font-weight: 300; }
-        
         .contact-phone { display: block; color: #000; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; font-weight: 300; margin-bottom: 20px; }
-        
         .contact-buttons { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
         .social-link { display: inline-block; font-size: 0.7rem; color: #000; text-decoration: none; border: 1px solid #ccc; padding: 8px 16px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 300; transition: 0.3s; }
-        .social-link:hover { background: #eee; border-color: #999; }
-
-        @media (max-width: 900px) { .masonry-gallery { column-count: 2; } }
-        @media (max-width: 600px) {
-            .category-hero { height: 40vh; }
-            .hero-title { font-size: 0.9rem; letter-spacing: 0.4em; }
-            .masonry-gallery { column-count: 1; }
-            .logo-text { font-size: 2rem; }
-        }
     </style>
 </head>
 <body>
 
+    <div class="top-nav">
+        <div class="nav-btn" onclick="goHome()">HOME</div>
+        <div class="nav-btn" onclick="showAbout()">ABOUT</div>
+    </div>
+
     <img src="cover.jpg" id="cover-img" alt="Background">
     <div id="cover">
         <div class="logo-container">
-            <div class="logo-text">CHERNETSKYI</div>
+            <div class="logo-text" onclick="goHome()">CHERNETSKYI</div>
             <div class="sub-logo">PHOTOGRAPHY</div>
         </div>
     </div>
 
     <div class="content-wrapper">
         <div id="dynamic-area">
-            <div class="about-section">
-                <h2>Євгеній Чернецький</h2>
-                <p>Я український фотограф, створюю ваші історії, які залишаються з вами назавжди. Маю 15-річний досвід, понад 500 весільних пар, тисячі індивідуальних зйомок та івентів.</p>
-            </div>
-            <div id="cards-container">
-                <script>
-                    function createCard(id, title, img) {
-                        document.write(`
-                            <div class="category-wrapper">
-                                <div class="category-hero" onclick="openGallery('${id}')">
-                                    <img src="${img}1.jpg" alt="${title}">
-                                    <div class="hero-title">${title}</div>
+            <div id="main-content">
+                <div class="about-section">
+                    <h2>Євгеній Чернецький</h2>
+                    <p>Я український фотограф, створюю ваші історії, які залишаються з вами назавжди. Маю 15-річний досвід, понад 500 весільних пар, тисячі індивідуальних зйомок та івентів.</p>
+                </div>
+                <div id="cards-container">
+                    <script>
+                        function createCard(id, title, img) {
+                            document.write(`
+                                <div class="category-wrapper">
+                                    <div class="category-hero" onclick="openGallery('${id}')">
+                                        <img src="${img}1.jpg" alt="${title}">
+                                        <div class="hero-title">${title}</div>
+                                    </div>
+                                    <div class="category-description" style="margin-top:20px;"><h3>${title}</h3></div>
                                 </div>
-                                <div class="category-description" style="margin-top:20px;"><h3>${title}</h3></div>
-                            </div>
-                        `);
-                    }
-                    createCard('wedding', 'WEDDING', 'wedding');
-                    createCard('individual', 'INDIVIDUAL', 'ind');
-                    createCard('promo', 'COMMERCIAL', 'promo');
-                    createCard('male', 'MALE PORTRAITS', 'male');
-                    createCard('kids', 'KIDS', 'kids');
-                    createCard('interior', 'INTERIOR', 'inter');
-                    createCard('lovestory', 'LOVE STORY', 'love');
-                </script>
+                            `);
+                        }
+                        createCard('wedding', 'WEDDING', 'wedding');
+                        createCard('individual', 'INDIVIDUAL', 'ind');
+                        createCard('promo', 'COMMERCIAL', 'promo');
+                        createCard('male', 'MALE PORTRAITS', 'male');
+                        createCard('kids', 'KIDS', 'kids');
+                        createCard('interior', 'INTERIOR', 'inter');
+                        createCard('lovestory', 'LOVE STORY', 'love');
+                    </script>
+                </div>
             </div>
             
             <footer>
@@ -106,6 +104,34 @@
     </div>
 
     <script>
+        function goHome() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => { location.reload(); }, 300);
+        }
+
+        function showAbout() {
+            document.getElementById('dynamic-area').innerHTML = `
+                <div class="about-section" style="padding: 100px 20px;">
+                    <h2>Євгеній Чернецький</h2>
+                    <p style="text-align: justify; line-height: 1.8;">
+                        Я український фотограф, який вірить, що кожна зйомка — це створення вашої унікальної історії. 
+                        Мій стиль — це поєднання щирих емоцій, природного світла та мінімалізму.<br><br>
+                        За 15 років у професії я мав честь працювати у понад 20 країнах світу. 
+                        Неодноразово фотографував найважливіші моменти для відомих українських артистів та успішних брендів, 
+                        допомагаючи їм розповідати свої історії через візуальні образи.<br><br>
+                        Мій підхід до роботи базується на увазі до деталей та вмінні бачити красу в усьому, що нас оточує. 
+                        Моя мета — показати вас по-новому, розкриваючи усі ваші найгарніші грані, щоб через багато років, 
+                        переглядаючи свої фотографії, ви відчували ті самі емоції, які виникали під час зйомки.
+                    </p>
+                    <a href="tel:+380635332571" class="contact-phone">+38 (063) 53-32-571</a>
+                    <div class="contact-buttons">
+                        <a href="https://www.instagram.com/chernetskyi_photography/" class="social-link">INSTAGRAM</a>
+                        <a href="https://t.me/CHERNETSKYI_PHOTO" class="social-link">TELEGRAM</a>
+                    </div>
+                </div>`;
+            window.scrollTo({ top: document.querySelector('.content-wrapper').offsetTop, behavior: 'smooth' });
+        }
+
         function openGallery(id) {
             const configs = { 
                 'wedding': { p: 'wedding', c: 8 }, 'individual': { p: 'ind', c: 8 }, 
