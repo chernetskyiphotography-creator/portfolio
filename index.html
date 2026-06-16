@@ -17,25 +17,28 @@
         .logo-text { font-size: 3rem; letter-spacing: 0.5em; text-transform: uppercase; font-weight: 200; margin: 0; }
         .sub-logo { font-size: 0.8rem; letter-spacing: 0.4em; color: #fff; margin-top: 15px; text-transform: uppercase; opacity: 0.8; }
 
-        /* Навігація */
-        nav { padding: 40px; position: sticky; top: 0; background: #000; z-index: 100; border-bottom: 1px solid #222; overflow-x: auto; white-space: nowrap; }
-        nav a { color: #fff; margin: 0 10px; text-transform: uppercase; cursor: pointer; text-decoration: none; font-size: 10px; letter-spacing: 2px; }
+        /* Навігація - компактна */
+        nav { padding: 20px 10px; position: sticky; top: 0; background: #000; z-index: 100; border-bottom: 1px solid #222; display: flex; justify-content: center; flex-wrap: wrap; }
+        nav a { color: #fff; margin: 5px 8px; text-transform: uppercase; cursor: pointer; text-decoration: none; font-size: 9px; letter-spacing: 1px; white-space: nowrap; }
         
         /* Контент */
         .about-section { max-width: 600px; margin: 80px auto; padding: 20px; color: #ccc; line-height: 1.6; }
-        .section-header { font-size: 1.5rem; margin: 80px 0 40px; letter-spacing: 5px; }
-        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; padding: 10px; max-width: 1200px; margin: auto; }
-        .gallery a { display: block; height: 250px; }
+        .section-header { font-size: 1.5rem; margin: 80px 0 40px; letter-spacing: 5px; text-transform: uppercase; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; padding: 10px; max-width: 1200px; margin: auto; }
+        .gallery a { display: block; height: 200px; }
         .gallery img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
         .gallery img:hover { opacity: 0.7; }
         
         footer { padding: 80px 20px; color: #444; }
 
+        /* Мобільні налаштування */
         @media (max-width: 600px) { 
             .logo-text { font-size: 1.5rem; } 
             .sub-logo { font-size: 0.5rem; }
-            .gallery { grid-template-columns: repeat(2, 1fr); } 
-            .gallery a { height: 150px; }
+            nav { padding: 10px 5px; }
+            nav a { margin: 3px 4px; font-size: 8px; }
+            .gallery { grid-template-columns: repeat(2, 1fr); gap: 5px; } 
+            .gallery a { height: 140px; }
         }
     </style>
 </head>
@@ -66,7 +69,7 @@
 
     <script>
         function renderGallery(id, prefix, count) {
-            document.write(`<div id="${id}" class="section-header">${id.toUpperCase().replace('-', ' ')}</div>`);
+            document.write(`<div id="${id}" class="section-header">${id === 'lovestory' ? 'Love Story' : id.toUpperCase().replace('-', ' ')}</div>`);
             document.write(`<div class="gallery">`);
             for(let i=1; i<=count; i++) {
                 document.write(`<a href="${prefix}${i}.jpg" data-lightbox="${id}"><img src="${prefix}${i}.jpg" alt="Photo ${i}"></a>`);
@@ -85,7 +88,7 @@
 
     <footer>
         <div style="margin-bottom: 10px; letter-spacing: 2px; text-transform: uppercase;">ЗВ'ЯЗАТИСЯ ЗІ МНОЮ</div>
-        <a href="tel:+380635332571" style="color: #fff; text-decoration: none; font-size: 1.5rem; letter-spacing: 2px;">+38 (063) 53-32-571</a>
+        <a href="tel:+380635332571" style="color: #fff; text-decoration: none; font-size: 1.2rem; letter-spacing: 2px;">+38 (063) 53-32-571</a>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
