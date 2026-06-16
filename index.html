@@ -54,7 +54,7 @@
 
     <div class="about-section">
         <h2>Євгеній Чернецький</h2>
-        <p>Я український фотограф, створюю ваші історії, які залишаються з вами назавжди. Фотографую понад 15 років, за плечима понад 500 весільних пар та тисячі індивідуальних зйомок та івентів. Мій підхід — це мінімалізм, емоції та увага до деталей у кожному кадрі.</p>
+        <p>Я український фотограф, створюю ваші історії, які залишаються з вами назавжди. Маю 15-річний досвід, понад 500 весільних пар, тисячі індивідуальних зйомок та івентів. Мій підхід — це мінімалізм, емоції та увага до деталей у кожному кадрі.</p>
     </div>
 
     <nav>
@@ -69,13 +69,30 @@
 
     <script>
         function renderGallery(id, prefix, count) {
-            document.write(`<div id="${id}" class="section-header">${id === 'lovestory' ? 'Love Story' : id.toUpperCase().replace('-', ' ')}</div>`);
+            document.write(`<div id="${id}" class="section-header">${id === 'lovestory' ? 'Love Story' : id.toUpperCase()}</div>`);
             document.write(`<div class="gallery">`);
             for(let i=1; i<=count; i++) {
-                document.write(`<a href="${prefix}${i}.jpg" data-lightbox="${id}"><img src="${prefix}${i}.jpg" alt="Photo ${i}"></a>`);
+                document.write(`<a href="${prefix}${i}.jpg" data-lightbox="${id}"><img src="${prefix}${i}.jpg" alt="Photo"></a>`);
             }
             document.write(`</div>`);
         }
     </script>
 
     <script>renderGallery('wedding', 'wedding', 20);</script>
+    <script>renderGallery('individual', 'ind', 20);</script>
+    <script>renderGallery('promo', 'promo', 20);</script>
+    <script>renderGallery('male', 'male', 20);</script>
+    <script>renderGallery('kids', 'kids', 20);</script>
+    <script>renderGallery('interior', 'inter', 20);</script>
+    <script>renderGallery('lovestory', 'love', 20);</script>
+
+    <footer>
+        <div style="letter-spacing: 2px; text-transform: uppercase;">ЗВ'ЯЗАТИСЯ ЗІ МНОЮ</div>
+        <a href="tel:+380635332571" style="display:block; margin-top:15px; color: #fff; text-decoration: none; font-size: 1.5rem; letter-spacing: 2px;">+38 (063) 53-32-571</a>
+        <a href="https://www.instagram.com/chernetskyi_photography/" target="_blank" class="social-link">Instagram</a>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+</body>
+</html>
