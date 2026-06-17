@@ -26,7 +26,7 @@
         
         .category-wrapper { margin-bottom: 80px; }
         .category-hero { position: relative; width: 100vw; height: 60vh; cursor: pointer; overflow: hidden; }
-        .category-hero img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .category-hero img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; object-position: 50% 50%; }
         .category-hero:hover img { transform: scale(1.03); }
         .hero-title { position: absolute; top: 50%; left: 0; width: 100%; transform: translateY(-50%); font-size: 1.2rem; letter-spacing: 0.6em; text-transform: uppercase; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.6); z-index: 2; pointer-events: none; font-weight: 300; }
         
@@ -71,10 +71,11 @@
         <div id="cards-container">
             <script>
                 function createCard(id, title, img) {
+                    let positionStyle = (id === 'individual' || id === 'male') ? 'object-position: 50% 30%;' : '';
                     document.write(`
                         <div class="category-wrapper">
                             <div class="category-hero" onclick="openGallery('${id}')">
-                                <img src="${img}1.jpg" alt="${title}">
+                                <img src="${img}1.jpg" alt="${title}" style="${positionStyle}">
                                 <div class="hero-title">${title}</div>
                             </div>
                             <div class="category-description" style="margin-top:20px;"><h3>${title}</h3></div>
@@ -112,79 +113,26 @@
     </div>
 
     <script>
-        function goHome() {
-            // Повертаємо початковий стан портфоліо і гортаємо вгору до логотипу
-            showPortfolio();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function showPortfolio() {
-            document.getElementById('dynamic-area').innerHTML = document.getElementById('original-content').innerHTML;
-            window.scrollTo({ top: document.querySelector('.content-wrapper').offsetTop, behavior: 'smooth' });
-        }
-
+        window.onload = showPortfolio;
+        function goHome() { showPortfolio(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        function showPortfolio() { document.getElementById('dynamic-area').innerHTML = document.getElementById('original-content').innerHTML; window.scrollTo({ top: document.querySelector('.content-wrapper').offsetTop, behavior: 'smooth' }); }
         function showAbout() {
             document.getElementById('dynamic-area').innerHTML = `
                 <div class="about-section" style="padding: 100px 20px;">
                     <h2>Євгеній Чернецький</h2>
-                    <p style="text-align: justify; line-height: 1.8;">
-                        Я український фотограф, який вірить, що кожна зйомка — це створення вашої унікальної історії. 
-                        Мій стиль — це поєднання щирих емоцій, природного світла та мінімалізму.<br><br>
-                        За 15 років у професії я мав честь працювати у понад 20 країнах світу. 
-                        Неодноразово фотографував найважливіші моменти для відомих українських артистів та успішних брендів, 
-                        допомагаючи їм розповідати свої історії через візуальні образи.<br><br>
-                        Мій підхід до роботи базується на увазі до деталей та вмінні бачити красу в усьому, що нас оточує. 
-                        Моя мета — показати вас по-новому, розкриваючи усі ваші найгарніші грані, щоб через багато років, 
-                        переглядаючи свої фотографії, ви відчували ті самі емоції, які виникали під час зйомки.
-                    </p>
-                    <a href="tel:+380635332571" class="contact-phone">+38 (063) 53-32-571</a>
-                    <div class="contact-buttons">
-                        <a href="https://www.instagram.com/chernetskyi_photography/" class="social-link">INSTAGRAM</a>
-                        <a href="https://t.me/CHERNETSKYI_PHOTO" class="social-link">TELEGRAM</a>
-                    </div>
+                    <p>Мій стиль — це поєднання щирих емоцій, природного світла та мінімалізму. Працюю по всьому світу.</p>
                 </div>`;
             window.scrollTo({ top: document.querySelector('.content-wrapper').offsetTop, behavior: 'smooth' });
         }
-
         function openGallery(id) {
             const configs = { 
-                'wedding': { p: 'wedding', c: 30, t: 'WEDDING' }, 
-                'individual': { p: 'ind', c: 30, t: 'INDIVIDUAL' }, 
-                'promo': { p: 'promo', c: 30, t: 'COMMERCIAL' }, 
-                'male': { p: 'male', c: 30, t: 'MALE PORTRAITS' },
-                'kids': { p: 'kids', c: 30, t: 'KIDS' }, 
-                'interior': { p: 'inter', c: 30, t: 'INTERIOR' }, 
-                'lovestory': { p: 'love', c: 30, t: 'LOVE STORY' }
+                'wedding': { p: 'wedding', c: 30, t: 'WEDDING' }, 'individual': { p: 'ind', c: 30, t: 'INDIVIDUAL' }, 
+                'promo': { p: 'promo', c: 30, t: 'COMMERCIAL' }, 'male': { p: 'male', c: 30, t: 'MALE PORTRAITS' },
+                'kids': { p: 'kids', c: 30, t: 'KIDS' }, 'interior': { p: 'inter', c: 30, t: 'INTERIOR' }, 'lovestory': { p: 'love', c: 30, t: 'LOVE STORY' }
             };
-            
-            let html = `
-                <div class="gallery-page" style="display:block; padding-top: 50px;">
-                    <div class="back-btn" onclick="showPortfolio()">← BACK</div>
-                    <div class="nav-gallery">
-                        <span onclick="openGallery('wedding')">WEDDING</span>
-                        <span onclick="openGallery('individual')">INDIVIDUAL</span>
-                        <span onclick="openGallery('promo')">COMMERCIAL</span>
-                        <span onclick="openGallery('male')">MALE</span>
-                        <span onclick="openGallery('kids')">KIDS</span>
-                        <span onclick="openGallery('interior')">INTERIOR</span>
-                        <span onclick="openGallery('lovestory')">LOVE STORY</span>
-                    </div>
-                    <h2 style="margin-bottom:50px; font-weight:300; letter-spacing:0.3em;">${configs[id].t}</h2>
-                    <div class="masonry-gallery">`;
-            
-            for(let i=1; i<=configs[id].c; i++) {
-                html += `<a href="${configs[id].p}${i}.jpg" data-lightbox="${id}"><img src="${configs[id].p}${i}.jpg"></a>`;
-            }
-            html += `</div>
-            <footer>
-                <a href="tel:+380635332571" class="contact-phone">+38 (063) 53-32-571</a>
-                <div class="contact-buttons">
-                    <a href="https://www.instagram.com/chernetskyi_photography/" target="_blank" class="social-link">INSTAGRAM</a>
-                    <a href="https://t.me/CHERNETSKYI_PHOTO" target="_blank" class="social-link">TELEGRAM</a>
-                </div>
-            </footer>
-            </div>`;
-            
+            let html = `<div class="gallery-page" style="display:block; padding-top: 50px;"><div class="back-btn" onclick="showPortfolio()">← BACK</div><h2 style="margin-bottom:50px;">${configs[id].t}</h2><div class="masonry-gallery">`;
+            for(let i=1; i<=configs[id].c; i++) html += `<a href="${configs[id].p}${i}.jpg" data-lightbox="${id}"><img src="${configs[id].p}${i}.jpg"></a>`;
+            html += `</div></div>`;
             document.getElementById('dynamic-area').innerHTML = html;
             window.scrollTo({ top: document.querySelector('.content-wrapper').offsetTop, behavior: 'smooth' });
         }
